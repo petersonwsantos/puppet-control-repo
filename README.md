@@ -11,6 +11,7 @@ You can also pass this data into the launch wizard as plain text, as a file (thi
 **Step 1:** Create an AWS CodeCommit Repository
 
 **Step 2:** Create Role for clone CodeCommit repository and get tag EC2
+
   **IAM RoLe**   (for clone CodeCommit repository and get tag EC2):
   ```json
     {
