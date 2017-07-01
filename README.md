@@ -5,7 +5,7 @@ EC2 Userdata
 ---------------
 When you launch an instance in Amazon EC2, you have the option of passing user data to the instance that can be used to perform common automated configuration tasks and even run scripts after the instance starts. 
 
-You can also pass this data into the launch wizard as plain text, as a file (this is useful for launching instances using the command line tools), or as base64-encoded text (for API calls).
+The script **userdata-puppetagent.bash** install puppet-agent and applies the settings according with tag **puppet_profile** of  instance EC2.
 
 
 **Step 1:** Create an AWS CodeCommit Repository
