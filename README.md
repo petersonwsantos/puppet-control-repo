@@ -43,7 +43,7 @@ You can also pass this data into the launch wizard as plain text, as a file (thi
         ]
     }
   ```
-**Step 3:**  Launch EC2 Instance (with IAM Role and tag  name=puppet_profile and key=essential_linux ) 
+**Step 3:**  Launch EC2 Instance (with IAM Role and tag  name=puppet_profile/key=essential_linux ) 
 
   **Userdata:** 
   ```bash
