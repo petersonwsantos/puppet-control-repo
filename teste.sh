@@ -6,7 +6,7 @@
 CODE_COMMIT="$1"
 
 # Repository Puppet Serverless
-REPO_PUPPET="$1" 
+REPO_PUPPET="$2" 
 
 INSTANCE_ID=$(curl -s -w '\n' http://169.254.169.254/latest/meta-data/instance-id/)
 EC2_AZ=`curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone`
