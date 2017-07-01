@@ -10,7 +10,7 @@ You can also pass this data into the launch wizard as plain text, as a file (thi
 
 
 Usage field user data: 
-
+```bash
 #!/bin/bash 
 
 # 'Y' to AWS code commit and "N" to other public git
@@ -19,5 +19,5 @@ CODE_COMMIT="Y"
 REPO_PUPPET="https://git-codecommit.us-east-2.amazonaws.com/v1/repos/aws-puppet-masterless-distribuited" 
 
 curl https://raw.githubusercontent.com/petersonwsantos/puppet-repo-aws/master/userdata-puppetagent.bash | bash -s -- $CODE_COMMIT $REPO_PUPPET
-
+```
 
