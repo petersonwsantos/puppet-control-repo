@@ -9,10 +9,10 @@ When you launch an instance in Amazon EC2, you have the option of passing user d
 You can also pass this data into the launch wizard as plain text, as a file (this is useful for launching instances using the command line tools), or as base64-encoded text (for API calls).
 
 
-
-**Usage:**
+Usage field user data: 
 
 #!/bin/bash 
+
 # 'Y' to AWS code commit and "N" to other public git
 CODE_COMMIT="Y"
 # Repository Puppet Serverless
