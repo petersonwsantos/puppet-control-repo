@@ -9,7 +9,7 @@ When you launch an instance in Amazon EC2, you have the option of passing user d
 You can also pass this data into the launch wizard as plain text, as a file (this is useful for launching instances using the command line tools), or as base64-encoded text (for API calls).
 
 
-IAM RoLe:
+IAM RoLe for Codecommit:
 ```json
   {
       "Version": "2012-10-17",
@@ -31,7 +31,6 @@ IAM RoLe:
               "Action": [
                   "codecommit:BatchGetRepositories",
                   "codecommit:Get*",
-                  "codecommit:GitPull",
                   "codecommit:List*"
               ],
               "Resource": [
