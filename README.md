@@ -49,7 +49,7 @@ The script **userdata-puppetagent.bash** install puppet-agent and applies the se
   ```bash
   #!/bin/bash 
 
-  # 'Y' to AWS code commit and "N" to other public git
+  # 'Y' to AWS code commit and "N" to other public git repo
   CODE_COMMIT="Y"
   # Repository Puppet Serverless
   REPO_PUPPET="https://git-codecommit.us-east-2.amazonaws.com/v1/repos/aws-puppet-serverless-distribuited" 
