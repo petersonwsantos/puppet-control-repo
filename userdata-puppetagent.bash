@@ -23,7 +23,7 @@ yum install puppet-agent -y
 if [ $CODE_COMMIT = "Y" ]; then
 echo "pxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel6/x86_64/city-fan.org-release-1-13.rhel6.noarch.rpm
-	yum update libcurl -y 
+	yum update libcurl -y ENABLEREPO=city-fan.org
 	yum install awscli -y
 	yum update -y
 	aws configure set region us-east-2
