@@ -14,7 +14,6 @@
 
 sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
-yum install -y epel-release git-core 
 yum install -y  http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 yum install puppet-agent -y 
 yum update -y
