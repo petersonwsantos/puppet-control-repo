@@ -24,9 +24,9 @@ if [ $CODE_COMMIT = "Y" ]; then
 echo "pxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel6/x86_64/city-fan.org-release-1-13.rhel6.noarch.rpm
 	yum update libcurl -y ENABLEREPO=city-fan.org
-	yum install awscli -y
+	#yum install awscli -y
 	#yum update -y
-	aws configure set region us-east-2
+	aws configure set region $EC2_REGION
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.helper '!aws --profile default codecommit credential-helper $@'
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.UseHttpPath true
 fi 
