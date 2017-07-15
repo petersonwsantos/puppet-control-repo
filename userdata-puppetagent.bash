@@ -25,13 +25,13 @@ echo "pxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 	rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel6/x86_64/city-fan.org-release-1-13.rhel6.noarch.rpm
 	yum update libcurl -y ENABLEREPO=city-fan.org
 	yum install awscli -y
-	yum update -y
+	#yum update -y
 	aws configure set region us-east-2
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.helper '!aws --profile default codecommit credential-helper $@'
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.UseHttpPath true
 fi 
 
-mv /etc/puppetlabs /etc/puppetlabs.bkp -fv
+rm /etc/puppetlabs -rfv
 git clone $REPO_PUPPET /etc/puppetlabs
 PUPPET_ROLE=$(aws ec2 describe-instances --region $EC2_REGION --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].Tags[?Key=='puppet_profile'].Value" --output text )
 echo "node default { include roles::$PUPPET_ROLE }" > /etc/puppetlabs/code/environments/production/manifests/site.pp 
