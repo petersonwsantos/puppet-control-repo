@@ -43,6 +43,7 @@ if [ $CODE_COMMIT = "Y" ]; then
 fi 
 
 rm -rfv  /etc/puppetlabs/code/environments/production
+mkdir    /etc/puppetlabs/code/environments/production
 git clone $REPO_PUPPET /etc/puppetlabs/code/environments/production
 echo "node default { include roles::$PUPPET_ROLE }" > /etc/puppetlabs/code/environments/production/manifests/site.pp 
 /opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
