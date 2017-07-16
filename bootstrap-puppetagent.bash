@@ -14,6 +14,18 @@ sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
 yum install -y  http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 yum install puppet-agent -y 
+cat > /etc/puppetlabs/code/hiera.yaml <<EOF
+---
+version: 5
+hierarchy:
+  - name: "OS values"
+    path: "%{facts.os.family}.yaml"
+  - name: "Common values"
+    path: "common.yaml"
+defaults:
+  data_hash: yaml_data
+  datadir: hieradata
+EOF
 yum update -y
 rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel6/x86_64/city-fan.org-release-1-13.rhel6.noarch.rpm
 yum update libcurl -y ENABLEREPO=city-fan.org
