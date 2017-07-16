@@ -24,7 +24,7 @@ if [ $CODE_COMMIT = "Y" ]; then
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.UseHttpPath true
 fi 
 
-rm /etc/puppetlabs -rfv
-git clone $REPO_PUPPET /etc/puppetlabs
+rm -rfv  /etc/puppetlabs/code/environments/production
+git clone $REPO_PUPPET /etc/puppetlabs/code/environments/production
 echo "node default { include roles::$PUPPET_ROLE }" > /etc/puppetlabs/code/environments/production/manifests/site.pp 
 /opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
