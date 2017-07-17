@@ -10,6 +10,8 @@ CODE_COMMIT=$(aws ec2 describe-instances --region $EC2_REGION --instance-ids $IN
 REPO_PUPPET=$(aws ec2 describe-instances --region $EC2_REGION --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].Tags[?Key=='puppet_repo'].Value" --output text )
 PUPPET_ROLE=$(aws ec2 describe-instances --region $EC2_REGION --instance-ids $INSTANCE_ID --query "Reservations[*].Instances[*].Tags[?Key=='puppet_profile'].Value" --output text )
 
+echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+echo "Installing puppet agent"
 yum install -y  http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 yum install puppet-agent -y 
 
@@ -26,19 +28,26 @@ defaults:
   datadir: hieradata
 EOF
 
-# yum update -y
-# rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel6/x86_64/city-fan.org-release-1-13.rhel6.noarch.rpm
+echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+echo "Installing curl for CodeCommit"
 rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel7/x86_64/city-fan.org-release-1-13.rhel7.noarch.rpm
 yum update libcurl -y ENABLEREPO=city-fan.org
-	
+
+echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+echo "Config CodeCommit"	
 if [ $CODE_COMMIT = "Y" ]; then
 	aws configure set region $EC2_REGION
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.helper '!aws --profile default codecommit credential-helper $@'
 	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.UseHttpPath true
 fi 
 
+echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+echo "Clone Puppet repository "
 rm -rfv  /etc/puppetlabs/code/environments/production
 mkdir    /etc/puppetlabs/code/environments/production
 git clone $REPO_PUPPET /etc/puppetlabs/code/environments/production
+
+echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+echo "Puppet - Apply config Role "
 echo "node default { include roles::$PUPPET_ROLE }" > /etc/puppetlabs/code/environments/production/manifests/site.pp 
 /opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
