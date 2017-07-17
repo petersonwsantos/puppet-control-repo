@@ -1,6 +1,5 @@
 #/bin/bash
 
-# puppet_profile  essential_linux   
 sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
 
