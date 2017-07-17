@@ -14,7 +14,7 @@ PUPPET_ROLE=$(aws ec2 describe-instances --region $EC2_REGION --instance-ids $IN
 echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 echo "Installing puppet agent"
 yum install -y  http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-yum install puppet-agent -y 
+yum install  puppet-agent-1.4.2-1.el7 -y 
 
 cat > /etc/puppetlabs/code/hiera.yaml <<EOF
 ---
