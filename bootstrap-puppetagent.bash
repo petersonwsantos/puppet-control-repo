@@ -27,7 +27,7 @@ defaults:
   datadir: hieradata
 EOF
 
-yum update -y
+# yum update -y
 # rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel6/x86_64/city-fan.org-release-1-13.rhel6.noarch.rpm
 rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel7/x86_64/city-fan.org-release-1-13.rhel7.noarch.rpm
 yum update libcurl -y ENABLEREPO=city-fan.org
