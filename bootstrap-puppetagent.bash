@@ -2,7 +2,8 @@
 
 sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
-
+echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+echo "get tags values"
 INSTANCE_ID=$(curl -s -w '\n' http://169.254.169.254/latest/meta-data/instance-id/)
 EC2_AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
 EC2_REGION="`echo \"$EC2_AZ\" | sed -e 's:\([0-9][0-9]*\)[a-z]*\$:\\1:'`" 
