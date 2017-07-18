@@ -50,5 +50,5 @@ git clone $REPO_PUPPET /etc/puppetlabs/code/environments/production
 
 echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 echo "Puppet - Apply config Role "
-echo "node default { include roles::$PUPPET_ROLE }" > /etc/puppetlabs/code/environments/production/manifests/site.pp 
+echo "node default { include role::$PUPPET_ROLE }" > /etc/puppetlabs/code/environments/production/manifests/site.pp 
 /opt/puppetlabs/bin/puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
