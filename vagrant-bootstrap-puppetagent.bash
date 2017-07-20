@@ -5,6 +5,7 @@ PUPPET_ROLE="linux_essential"
 
 sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
+yum install git-core
 
 echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 echo "Installing puppet agent"
@@ -23,19 +24,6 @@ defaults:
   data_hash: yaml_data
   datadir: hieradata
 EOF
-
-echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
-echo "Installing curl for CodeCommit"
-rpm -Uvh http://www.city-fan.org/ftp/contrib/yum-repo/rhel7/x86_64/city-fan.org-release-1-13.rhel7.noarch.rpm
-yum update libcurl -y ENABLEREPO=city-fan.org
-
-echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
-echo "Config CodeCommit"	
-if [ $CODE_COMMIT = "Y" ]; then
-	aws configure set region $EC2_REGION
-	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.helper '!aws --profile default codecommit credential-helper $@'
-	git config --system credential.https://git-codecommit.us-east-2.amazonaws.com.UseHttpPath true
-fi 
 
 echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 echo "Clone Puppet repository "
