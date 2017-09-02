@@ -5,7 +5,7 @@ PUPPET_ROLE="linux_essential"
 
 sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
-yum install -y git-core
+yum install -y git
 
 echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 echo "Installing puppet agent"
