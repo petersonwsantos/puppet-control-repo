@@ -5,12 +5,12 @@ PUPPET_ROLE="linux_essential"
 
 sed -i s/^SELINUX=.*$/SELINUX=disabled/ /etc/selinux/config
 setenforce 0
-yum install git-core
+yum install -y git-core
 
 echo "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 echo "Installing puppet agent"
 yum install -y  http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-yum install  puppet-agent-1.9.0-1.el7 -y 
+yum install -y puppet-agent-1.9.0-1.el7  
 
 cat > /etc/puppetlabs/code/hiera.yaml <<EOF
 ---
