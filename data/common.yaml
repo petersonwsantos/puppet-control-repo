@@ -1,0 +1,24 @@
+---
+desktop_packages::chocolateyfeature_autouninstaller: enabled
+desktop_packages::chocolateyconfig_proxy_manage: false
+desktop_packages::chocolateyconfig_proxy_server: 'http://192.168.0.1:3128'
+desktop_packages::chocolateyconfig_proxyUser: my_user
+desktop_packages::chocolateyconfig_proxyPassword: my_passowrd  
+desktop_packages::package_manage: true
+desktop_packages::package_list:
+  'notepadplusplus':
+    ensure: 7.4.2
+    install_options: ['--allow-downgrade']
+    source: https://chocolatey.org/api/v2/
+  'notepadplusplus.install':
+    ensure: 7.4.2
+    install_options: ['--allow-downgrade']
+    source: https://chocolatey.org/api/v2/
+  #'vlc':
+  #  ensure: absent
+  #  provider: chocolatey
+  #  source: https://chocolatey.org/api/v2/ 
+  #'googlechrome':
+  #  ensure: absent
+  #  provider: chocolatey
+  #  source: https://chocolatey.org/api/v2/ 
